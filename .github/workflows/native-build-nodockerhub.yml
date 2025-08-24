@@ -112,10 +112,10 @@ jobs:
       - name: Build Windows native image
         shell: cmd
         run: |
-          .\mvn.cmd clean
+          .\mvn.cmd clean compile
           .\mvn.cmd spring-boot:process-aot
           .\mvn.cmd spring-boot:process-aot
-          .\mvnw.cmd -Pnative native:compile -DskipTests
+          .\mvnw.cmd -Pnative package -DskipTests
       
       - name: Upload Windows native binary to Release
         uses: softprops/action-gh-release@v1
