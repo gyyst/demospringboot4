@@ -67,7 +67,7 @@ jobs:
 
       - name: Build native image
         run: |
-          ./mvnw clean
+          ./mvnw clean compile
           ./mvnw spring-boot:process-aot
           ./mvnw spring-boot:process-aot
           ./mvnw -Pnative native:compile -DskipTests

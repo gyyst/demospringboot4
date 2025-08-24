@@ -89,24 +89,6 @@
             <plugin>
                 <groupId>org.graalvm.buildtools</groupId>
                 <artifactId>native-maven-plugin</artifactId>
-<!--                <configuration>-->
-<!--                    &lt;!&ndash; imageName用于设置生成的二进制文件名称 &ndash;&gt;-->
-<!--                    <imageName>${project.artifactId}</imageName>-->
-<!--                    &lt;!&ndash; mainClass用于指定main方法类路径 &ndash;&gt;-->
-<!--                    <mainClass>com.example.demospringboot4.Demospringboot4Application</mainClass>-->
-<!--                    <buildArgs>-->
-<!--                        &#45;&#45;no-fallback-->
-<!--                    </buildArgs>-->
-<!--                </configuration>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>build-native</id>-->
-<!--                        <goals>-->
-<!--                            <goal>compile-no-fork</goal>-->
-<!--                        </goals>-->
-<!--                        <phase>package</phase>-->
-<!--                    </execution>-->
-<!--                </executions>-->
             </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -126,6 +108,9 @@
     <profiles>
         <profile>
             <id>native</id>
+            <properties>
+                <spring-boot.aot.enabled>true</spring-boot.aot.enabled>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
