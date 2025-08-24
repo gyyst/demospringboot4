@@ -65,12 +65,9 @@ jobs:
       - name: chmod
         run: chmod +x ./mvnw
 
-      - name: Build with Maven (compile)
-        run: ./mvnw clean compile
-
       - name: Build native image
         run: |
-          ./mvnw clean compile
+          ./mvnw clean
           ./mvnw spring-boot:process-aot
           ./mvnw spring-boot:process-aot
           ./mvnw -Pnative native:compile -DskipTests
@@ -115,7 +112,7 @@ jobs:
       - name: Build Windows native image
         shell: cmd
         run: |
-          .\mvn.cmd clean compil
+          .\mvn.cmd clean
           .\mvn.cmd spring-boot:process-aot
           .\mvn.cmd spring-boot:process-aot
           .\mvnw.cmd -Pnative native:compile -DskipTests
