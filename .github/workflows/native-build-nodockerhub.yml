@@ -69,7 +69,11 @@ jobs:
         run: ./mvnw clean compile
 
       - name: Build native image
-        run: ./mvnw -Pnative native:compile -DskipTests
+        run: |
+          ./mvnw clean compil
+          ./mvnw spring-boot:process-aot
+          ./mvnw spring-boot:process-aot
+          ./mvnw -Pnative native:compile -DskipTests
 
       - name: Upload native binary to Release
         uses: softprops/action-gh-release@v1
@@ -111,6 +115,9 @@ jobs:
       - name: Build Windows native image
         shell: cmd
         run: |
+          .\mvn.cmd clean compil
+          .\mvn.cmd spring-boot:process-aot
+          .\mvn.cmd spring-boot:process-aot
           .\mvnw.cmd -Pnative native:compile -DskipTests
       
       - name: Upload Windows native binary to Release
