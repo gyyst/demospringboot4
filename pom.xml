@@ -6,12 +6,10 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>4.0.0-SNAPSHOT</version>
-        <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
     <artifactId>demospringboot4</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <n>demospringboot4</n>
     <description>demospringboot4</description>
     <url/>
     <licenses>
