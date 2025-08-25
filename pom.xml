@@ -81,6 +81,13 @@
             <plugin>
             <groupId>org.graalvm.buildtools</groupId>
             <artifactId>native-maven-plugin</artifactId>
+            <configuration>
+                <imageName>${project.artifactId}</imageName>
+                <mainClass>com.example.demospringboot4.Demospringboot4Application</mainClass>
+                <buildArgs>
+                    --no-fallback
+                </buildArgs>
+            </configuration>
             </plugin>
         </plugins>
     </build>
