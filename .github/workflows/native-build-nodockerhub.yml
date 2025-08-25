@@ -69,7 +69,7 @@ jobs:
         run: |
           ./mvnw clean compile
           ./mvnw spring-boot:process-aot
-          ./mvnw spring-boot:process-aot
+          ./mvnw spring-boot:process-test-aot
           ./mvnw -Pnative native:compile -DskipTests
 
       - name: Upload native binary to Release
@@ -114,7 +114,7 @@ jobs:
         run: |
           .\mvn.cmd clean compile
           .\mvn.cmd spring-boot:process-aot
-          .\mvn.cmd spring-boot:process-aot
+          .\mvn.cmd spring-boot:process-test-aot
           .\mvnw.cmd -Pnative package -DskipTests
       
       - name: Upload Windows native binary to Release
