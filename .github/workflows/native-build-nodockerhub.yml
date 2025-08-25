@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      
+
       - name: Create new tag
         id: create_tag
         run: |
@@ -70,7 +70,7 @@ jobs:
           ./mvnw clean compile
           ./mvnw spring-boot:process-aot
           ./mvnw spring-boot:process-test-aot
-          ./mvnw -Pnative package -DskipTests
+          ./mvnw -Pnative native:compile
 
       - name: Upload native binary to Release
         uses: softprops/action-gh-release@v1
@@ -84,13 +84,13 @@ jobs:
   build-windows-native:
     needs: create-tag-and-release
     runs-on: windows-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           ref: ${{ needs.create-tag-and-release.outputs.new_tag }}
-      
+
       - name: Set up GraalVM
         id: setup-graalvm
         uses: graalvm/setup-graalvm@v1
@@ -98,25 +98,25 @@ jobs:
           java-version: '21'
           distribution: 'graalvm-community'
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      
+
       - name: Cache Maven dependencies
         uses: actions/cache@v4
         with:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
-      
+
       - name: Setup Visual Studio Build Tools
         uses: microsoft/setup-msbuild@v2
-      
+
       - name: Build Windows native image
         shell: cmd
         run: |
           .\mvnw.cmd clean compile
           .\mvnw.cmd spring-boot:process-aot
           .\mvnw.cmd spring-boot:process-test-aot
-          .\mvnw.cmd -Pnative package -DskipTests
-      
+          .\mvnw.cmd -Pnative native:compile
+
       - name: Upload Windows native binary to Release
         uses: softprops/action-gh-release@v1
         with:
