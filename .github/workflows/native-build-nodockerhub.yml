@@ -116,8 +116,6 @@ jobs:
 
       - name: Build Windows native image2
         shell: cmd
-        run: |
-          .\mvnw.cmd clean compile
           .\mvnw.cmd spring-boot:process-aot
           .\mvnw.cmd spring-boot:process-test-aot
 
@@ -125,7 +123,7 @@ jobs:
         shell: cmd
         run: |
           .\mvnw.cmd -Pnative native:compile
-          
+
       - name: Upload Windows native binary to Release
         uses: softprops/action-gh-release@v1
         with:
