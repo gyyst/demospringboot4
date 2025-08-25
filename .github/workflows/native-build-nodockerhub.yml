@@ -116,6 +116,7 @@ jobs:
 
       - name: Build Windows native image2
         shell: cmd
+        run: |
           .\mvnw.cmd spring-boot:process-aot
           .\mvnw.cmd spring-boot:process-test-aot
 
