@@ -109,14 +109,23 @@ jobs:
       - name: Setup Visual Studio Build Tools
         uses: microsoft/setup-msbuild@v2
 
-      - name: Build Windows native image
+      - name: Build Windows native image1
+        shell: cmd
+        run: |
+          .\mvnw.cmd clean compile
+
+      - name: Build Windows native image2
         shell: cmd
         run: |
           .\mvnw.cmd clean compile
           .\mvnw.cmd spring-boot:process-aot
           .\mvnw.cmd spring-boot:process-test-aot
-          .\mvnw.cmd -Pnative native:compile
 
+      - name: Build Windows native image3
+        shell: cmd
+        run: |
+          .\mvnw.cmd -Pnative native:compile
+          
       - name: Upload Windows native binary to Release
         uses: softprops/action-gh-release@v1
         with:
