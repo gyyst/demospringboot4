@@ -126,6 +126,7 @@ jobs:
           .\mvnw.cmd -Pnative native:compile
       - name: Build Windows native image4
         shell: cmd
+        run: |
           ls target/
 
       - name: Upload Windows native binary to Release
