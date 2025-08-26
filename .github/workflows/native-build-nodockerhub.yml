@@ -124,7 +124,9 @@ jobs:
         shell: cmd
         run: |
           .\mvnw.cmd -Pnative native:compile
-          ls target
+      - name: Build Windows native image4
+        shell: cmd
+          ls target/
 
       - name: Upload Windows native binary to Release
         uses: softprops/action-gh-release@v1
