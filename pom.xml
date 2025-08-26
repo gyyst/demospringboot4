@@ -108,7 +108,6 @@
                     <buildArg>--enable-monitoring=heapdump</buildArg>
                     <buildArg>-H:+ReportExceptionStackTraces</buildArg>
                     <buildArg>-H:+UnlockExperimentalVMOptions</buildArg>
-                    <buildArg>-H:+UseCompressedOops</buildArg>
                     <buildArg>--initialize-at-build-time=org.slf4j</buildArg>
                 </buildArgs>
             </configuration>
