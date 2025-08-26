@@ -27,7 +27,6 @@
     <properties>
         <java.version>21</java.version>
         <!-- Native编译需要启用AOT -->
-        <spring-boot.aot.enabled>false</spring-boot.aot.enabled>
         <graalvm.version>23.1.0</graalvm.version>
     </properties>
     <repositories>
@@ -78,6 +77,30 @@
 
     <build>
         <plugins>
+
+            <!-- Spring Boot Maven插件 - 必需 -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+                <executions>
+                    <!-- AOT处理执行 -->
+                    <execution>
+                        <id>process-aot</id>
+                        <goals>
+                            <goal>process-aot</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- GraalVM Native Maven插件 - 必需 -->
             <plugin>
             <groupId>org.graalvm.buildtools</groupId>
             <artifactId>native-maven-plugin</artifactId>
