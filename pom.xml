@@ -102,7 +102,14 @@
                 <imageName>${project.artifactId}</imageName>
                 <mainClass>com.example.demospringboot4.Demospringboot4Application</mainClass>
                 <buildArgs>
-                    --no-fallback
+                    <buildArg>--no-fallback</buildArg>
+                    <buildArg>--install-exit-handlers</buildArg>
+                    <buildArg>--enable-url-protocols=http,https</buildArg>
+                    <buildArg>--enable-monitoring=heapdump</buildArg>
+                    <buildArg>-H:+ReportExceptionStackTraces</buildArg>
+                    <buildArg>-H:+UnlockExperimentalVMOptions</buildArg>
+                    <buildArg>-H:+UseCompressedOops</buildArg>
+                    <buildArg>--initialize-at-build-time=org.slf4j</buildArg>
                 </buildArgs>
             </configuration>
             </plugin>
